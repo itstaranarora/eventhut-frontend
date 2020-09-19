@@ -10,7 +10,7 @@ function Event() {
   const [eventData, setEventData] = React.useState({});
   React.useEffect(() => {
     const fetchData = (id) => {
-      setEventData(data.find((item) => item.id == id));
+      setEventData(data.find((item) => item.id === Number(id)));
     };
     fetchData(id);
   }, [id]);
@@ -64,7 +64,10 @@ function Event() {
         </div>
         <div className="event__location">
           <h3>Organizer</h3>
-          <img src="https://images.unsplash.com/photo-1530268729831-4b0b9e170218?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" />
+          <img
+            alt="binod"
+            src="https://images.unsplash.com/photo-1530268729831-4b0b9e170218?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
+          />
           <span>Binod</span>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi
