@@ -1,0 +1,34 @@
+.cover {
+  background-image: url("../../assets/cover.jpg");
+  height: 70vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 0.7rem;
+  max-width: 1600px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+
+.cover__text > h3 {
+  color: white;
+  font-size: 3.5rem;
+  margin-right: 5rem;
+}
+
+@media (max-width: 600px) {
+  .cover__text {
+    justify-content: center;
+  }
+  .cover__text > h3 {
+    font-size: 1.3rem;
+    margin-right: 1rem;
+  }
+  .cover {
+    height: 40vh;
+    width: 100%;
+    border-radius: 0%;
+    background-position: center right;
+  }
+}

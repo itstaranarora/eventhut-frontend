@@ -1,24 +1,49 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Header, Footer } from "./components";
+import { useStateValue } from "./states/StateProvider";
+import { Home, Login, Signup, Event } from "./views";
+import { IconButton } from "@material-ui/core";
+import WbSunnyIcon from "@material-ui/icons/WbSunny";
 
 function App() {
+  const [{ darkMode }, dispatch] = useStateValue();
+
+  const toggleMode = () => {
+    const mode = darkMode ? "light" : "dark";
+    document.documentElement.setAttribute("color-mode", mode);
+    dispatch({
+      type: "SET_DARKMODE",
+      dark: !darkMode,
+    });
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Switch>
+          <Route path="/event/:id">
+            <Event />
+            <Footer />
+          </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/signup">
+            <Signup />
+          </Route>
+          <Route path="/">
+            <Header />
+            <Home />
+            <Footer />
+          </Route>
+        </Switch>
+      </Router>
+
+      <IconButton onClick={toggleMode} className="App__darkBtn">
+        <WbSunnyIcon />
+      </IconButton>
     </div>
   );
 }
