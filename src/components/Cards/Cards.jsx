@@ -5,7 +5,7 @@ import Card from "../Card/Card";
 function Cards({ data }) {
   return (
     <div className="cards container">
-      {data.map((e) => (
+      {data?.map((e) => (
         <Card data={e} key={e.id} />
       ))}
     </div>

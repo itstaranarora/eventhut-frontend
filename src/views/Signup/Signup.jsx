@@ -1,12 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Signup.css";
 import Logo from "../../assets/Logo.svg";
 import logoDark from "../../assets/Logo-Dark.svg";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useStateValue } from "../../states/StateProvider";
+import Button from "@material-ui/core/Button";
+import { Signup as NewUser } from "../../api";
 
-function Signup() {
+function Signup(props) {
   const [{ darkMode }] = useStateValue();
+  const history = useHistory();
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    NewUser(username, password, email);
+    history.push("/");
+  };
+
   return (
     <div className="signup">
       <div className="signup__left">
@@ -30,20 +44,35 @@ function Signup() {
           <h3>Create Account</h3>
           <form className="signup__form">
             <div className="signup__item">
-              <span>Your Full Name</span>
-              <input type="email" placeholder="Taran Arora" />
+              <span>Your Username</span>
+              <input
+                type="email"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                placeholder="Taran Arora"
+              />
             </div>
             <div className="signup__item">
               <span>Your Email</span>
-              <input type="email" placeholder="itstaranarora@gmail.com" />
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="itstaranarora@gmail.com"
+              />
             </div>
             <div className="signup__item">
               <span>Password</span>
-              <input type="password" placeholder="8+ characters" />
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="8+ characters"
+              />
             </div>
-            <Link to="/" className="signup__button">
+            <Button onClick={handleSubmit} className="signup__button">
               Sign Up
-            </Link>
+            </Button>
           </form>
         </div>
       </div>

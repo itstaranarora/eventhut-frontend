@@ -1,5 +1,6 @@
 import React from "react";
 import "./Booking.css";
+import { format } from "date-fns";
 
 function Booking({ data }) {
   return (
@@ -7,7 +8,8 @@ function Booking({ data }) {
       <div className="booking__info">
         <h3>Date & Time</h3>
         <span>
-          Tuesday, {data?.month} {data?.date}, 2020 at 20:30 PM{" "}
+          {data &&
+            format(new Date(data?.datetime), "EEEE, LLL dd yyyy 'at' hh: mm a")}
         </span>
         <p>{data?.price === 0 ? "Free" : `₹ ${data?.price}`}</p>
       </div>
