@@ -1,13 +1,12 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
 import "./Event.css";
-import data from "../../data.json";
 import { Booking, Cards, Header } from "../../components";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import useFetch from "../../hooks/useFetch";
-import { event, events, imgPath } from "../../api";
-import logoDark from "../../assets/Logo-Dark.svg";
-import Logo from "../../assets/Logo.svg";
+import { event, events } from "../../api";
+import logoDark from "../../assets/Component-3.svg";
+import Logo from "../../assets/Component-2.svg";
 import { useStateValue } from "../../states/StateProvider";
 
 function Event() {

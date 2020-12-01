@@ -24,6 +24,20 @@
   background-color: var(--white-color);
 }
 
+@keyframes logoLoading {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1.5);
+  }
+}
+
+.event__loading > img {
+  -webkit-animation: logoLoading 3s infinite alternate;
+  animation: logoLoading 3s infinite alternate;
+}
+
 .event {
   background-color: var(--white-color);
 }

@@ -4,11 +4,11 @@ import "./Home.css";
 import useFetch from "../../hooks/useFetch";
 import { events } from "../../api";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import { useStateValue } from "../../states/StateProvider";
+// import { useStateValue } from "../../states/StateProvider";
 
 function Home() {
   const { response, loading } = useFetch(events);
-  const [{ user }, dispatch] = useStateValue();
+  // const [{ user }, dispatch] = useStateValue();
 
   return (
     <div className="home">

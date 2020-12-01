@@ -5,7 +5,6 @@ import { IconButton } from "@material-ui/core";
 import CloudOffIcon from "@material-ui/icons/CloudOff";
 import CloudQueueIcon from "@material-ui/icons/CloudQueue";
 import { format } from "date-fns";
-import { imgPath } from "../../api";
 
 function Card({ data }) {
   const history = useHistory();
