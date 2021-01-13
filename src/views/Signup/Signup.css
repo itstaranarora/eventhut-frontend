@@ -108,19 +108,19 @@
 
 .signup__button {
   background-color: var(--primary-color);
-  width: 130px;
+  width: 150px;
   display: flex;
-  margin: 2rem auto;
+  margin: 2rem auto 1rem;
   color: white;
   font-weight: 600;
   border-radius: 0.5rem;
   align-items: center;
   justify-content: center;
-  height: 50px;
+  height: 55px;
   text-decoration: none;
-  -webkit-box-shadow: 0px 0px 14px 0px rgba(49, 50, 50, 0.38);
-  -moz-box-shadow: 0px 0px 14px 0px rgba(49, 50, 50, 0.38);
-  box-shadow: 0px 0px 14px 0px rgba(49, 50, 50, 0.38);
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
 }
 
 .signup__button:hover {

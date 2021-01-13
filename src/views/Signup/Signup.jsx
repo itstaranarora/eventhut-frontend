@@ -70,9 +70,9 @@ function Signup(props) {
                 placeholder="8+ characters"
               />
             </div>
-            <Button onClick={handleSubmit} className="signup__button">
+            <button onClick={handleSubmit} className="signup__button">
               Sign Up
-            </Button>
+            </button>
           </form>
         </div>
       </div>

@@ -39,23 +39,25 @@ function Event() {
           backgroundImage: `url(${response?.imgURL})`,
         }}
       >
-        <div className="event__text">
-          <Link to="/" className="event__back">
-            <ArrowBackIcon />
-            <span>Back</span>
-          </Link>
-          <div className="event__coverinfo">
-            <h2>{response?.name}</h2>
-            <span>By {response?.user.name}</span>
-            <p>
-              {response?.address.location} <br />
-              {response?.address.city}, {response?.address.state},{" "}
-              {response?.address.country},
-            </p>
+        <div className="event__layout container">
+          <div className="event__text">
+            <Link to="/" className="event__back">
+              <ArrowBackIcon />
+              <span>Back</span>
+            </Link>
+            <div className="event__coverinfo">
+              <h2>{response?.name}</h2>
+              <span>By {response?.user.name}</span>
+              <p>
+                {response?.address.location} <br />
+                {response?.address.city}, {response?.address.state},{" "}
+                {response?.address.country},
+              </p>
+            </div>
           </div>
-        </div>
-        <div className="event__datebox">
-          <Booking data={response} />
+          <div className="event__datebox">
+            <Booking data={response} />
+          </div>
         </div>
       </div>
       <div className="event__content container">
@@ -64,6 +66,9 @@ function Event() {
           <p>{response?.description}</p>
         </div>
         <div className="event__location">
+          <div className="event__mobile">
+            <Booking data={response} />
+          </div>
           <h3>Organizer</h3>
           <img
             alt="binod"

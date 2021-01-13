@@ -4,26 +4,29 @@
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 0.7rem;
-  max-width: 1600px;
+  width: 100%;
+  padding: 0 10px;
+  max-width: 1400px;
   margin: 0 auto;
   display: flex;
-  justify-content: right;
   align-items: center;
 }
 
-.cover__text > h3 {
+.cover__text {
+  width: 100%;
+  display: block;
   color: white;
-  font-size: 3.5rem;
-  margin-right: 5rem;
+  text-align: start;
+  font-size: 3rem;
 }
 
 @media (max-width: 600px) {
   .cover__text {
     justify-content: center;
   }
+
   .cover__text > h3 {
-    font-size: 1.3rem;
-    margin-right: 1rem;
+    font-size: 2rem;
   }
   .cover {
     height: 40vh;

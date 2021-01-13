@@ -1,6 +1,5 @@
 .card {
   width: 100%;
-  min-height: 400px;
   cursor: pointer;
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
 }
@@ -15,15 +14,19 @@
   overflow: hidden;
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
-  max-height: 250px;
+  height: 220px;
+  width: 100%;
+  position: relative;
 }
 
 .card__icons {
   display: flex;
+  position: absolute;
+  top: 5px;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 1.5rem;
-  margin-bottom: -5rem;
+  width: 100%;
 }
 
 .card__icon {
@@ -40,15 +43,13 @@
 
 .card_img {
   width: 100%;
-  min-height: 250px;
-  max-height: 250px;
 }
 
 .card__body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 150px;
+  height: 150px;
   background-color: var(--white-color);
 }
 

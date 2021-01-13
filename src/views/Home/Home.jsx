@@ -20,7 +20,9 @@ function Home() {
           <CircularProgress size="3rem" />
         </div>
       ) : (
-        <Cards data={response} />
+        <div className="container">
+          <Cards data={response} />
+        </div>
       )}
     </div>
   );

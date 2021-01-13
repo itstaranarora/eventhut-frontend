@@ -10,6 +10,7 @@
 
 .booking__info {
   text-align: start;
+  margin-bottom: 20px;
 }
 
 .booking__info > h3 {
@@ -26,7 +27,8 @@
 .booking__info > p {
   color: var(--text-color);
   font-weight: 600;
-  font-size: 1.2rem;
+  font-size: 1.6rem;
+  margin-top: 10px;
 }
 
 .booking_btnbook {

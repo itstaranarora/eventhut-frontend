@@ -4,10 +4,20 @@
   background-size: cover;
   border-radius: 0.7rem;
   background-position: center;
-  max-width: 1600px;
+  width: 100%;
+  padding: 0 20px;
+  max-width: 1400px;
   margin: 0 auto;
   display: flex;
-  padding: 5rem 10rem;
+  align-items: center;
+  position: relative;
+}
+
+.event__layout {
+  display: flex;
+  width: 100%;
+  filter: none;
+  justify-content: space-between;
 }
 
 .event__loading {
@@ -44,6 +54,8 @@
 
 .event__back {
   display: flex;
+  position: absolute;
+  top: 10%;
   width: 90px;
   justify-content: space-between;
   align-items: center;
@@ -62,7 +74,6 @@
 }
 
 .event__datebox {
-  width: 50%;
   display: flex;
   align-items: center;
   justify-content: right;
@@ -72,17 +83,20 @@
   margin-bottom: 1rem;
   font-size: 3rem;
   font-weight: 600;
+  text-transform: capitalize;
   color: white;
 }
 
 .event__coverinfo > span {
   color: white;
   font-weight: 500;
+  text-transform: capitalize;
 }
 
 .event__coverinfo > p {
   color: white;
   font-size: 1.2rem;
+  text-transform: capitalize;
   margin: 2rem 0;
 }
 
@@ -99,6 +113,7 @@
 .event__description > h3 {
   font-size: 2rem;
   font-weight: 500;
+  margin: 1rem 0;
   color: var(--text-color);
 }
 
@@ -107,6 +122,7 @@
 }
 
 .event__location > h3 {
+  margin: 1rem 0;
   font-size: 2rem;
   font-weight: 500;
   color: var(--text-color);
@@ -118,14 +134,19 @@
 
 .event__location > img {
   width: 100%;
-  height: 280px;
-  object-fit: cover;
+  object-fit: contain;
+  margin-bottom: 1rem;
 }
 
 .event__location > span {
   font-size: 1.5rem;
   font-weight: 500;
   color: var(--text-color);
+  text-transform: capitalize;
+}
+
+.event__mobile {
+  display: none;
 }
 
 .event__location > p {
@@ -136,7 +157,6 @@
 .event__otherevents {
   overflow: hidden;
   background-color: var(--bg-color);
-  padding: 2rem 0;
   margin-top: 10rem;
   margin-bottom: 8rem;
 }
@@ -155,8 +175,18 @@
   .event__cover {
     border-radius: 0%;
     flex-direction: column;
-    height: 45vh;
-    padding: 2rem;
+    height: 50vh;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+  }
+
+  .event__layout {
+    height: 100%;
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.2);
+    flex-direction: column;
+    justify-content: center;
   }
 
   .event__text {
@@ -164,8 +194,7 @@
     justify-content: space-between;
   }
   .event__datebox {
-    width: 100%;
-    margin-top: 2rem;
+    display: none;
   }
   .event__coverinfo > h2 {
     font-size: 2rem;
@@ -195,5 +224,13 @@
   }
   .event__location {
     width: 100%;
+  }
+  .event__mobile {
+    display: block;
+    margin: 2rem 0;
+  }
+
+  .event__content {
+    margin-top: 1rem;
   }
 }
