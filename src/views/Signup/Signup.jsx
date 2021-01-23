@@ -5,7 +5,6 @@ import logoDark from "../../assets/Logo-Dark.svg";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { useStateValue } from "../../states/StateProvider";
-import Button from "@material-ui/core/Button";
 import { Signup as NewUser } from "../../api";
 
 function Signup(props) {

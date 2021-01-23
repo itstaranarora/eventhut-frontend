@@ -161,7 +161,7 @@
   margin-bottom: 8rem;
 }
 
-.event__otherevents h2 {
+.event__otherevents > h2 {
   font-size: 2rem;
   font-weight: 500;
   margin: 3rem 0;

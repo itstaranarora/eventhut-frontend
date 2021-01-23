@@ -4,8 +4,8 @@
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 0.7rem;
-  width: 100%;
-  padding: 0 10px;
+  /* width: 100%; */
+  margin: 0 10px;
   max-width: 1400px;
   margin: 0 auto;
   display: flex;
