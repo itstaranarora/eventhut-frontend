@@ -5,7 +5,8 @@ import logoDark from "../../assets/Logo-Dark.svg";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { useStateValue } from "../../states/StateProvider";
-import { Signup as NewUser } from "../../api";
+import {registerUser} from "api"
+// import { Signup as NewUser } from "../../api";
 
 function Signup(props) {
   const [{ darkMode }] = useStateValue();
@@ -16,7 +17,8 @@ function Signup(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    NewUser(username, password, email);
+    // NewUser(username, password, email);
+    registerUser({username,password,email}).then(res => console.log(res)).catch(err => console.log(err))
     history.push("/");
   };
 

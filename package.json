@@ -12,12 +12,15 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.21.0",
     "date-fns": "^2.16.1",
+    "dotenv": "^8.2.0",
+    "jwt-decode": "^3.1.2",
     "ra-data-simple-rest": "^3.10.2",
     "react": "^16.13.1",
     "react-admin": "^3.10.2",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3"
+    "react-scripts": "3.4.3",
+    "react-toastify": "^7.0.3"
   },
   "scripts": {
     "start": "react-scripts start",
