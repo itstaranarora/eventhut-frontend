@@ -1,12 +1,46 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Login.css";
 import Logo from "../../assets/Logo.svg";
 import logoDark from "../../assets/Logo-Dark.svg";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useStateValue } from "../../states/StateProvider";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import { setLocalStorage, getJwt, saveUserAndPassword, loginUser } from "api";
 
 function Login() {
-  const [{ darkMode }] = useStateValue();
+  const [{ darkMode }, dispatch] = useStateValue();
+  const [identifier, setIdentifier] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [password, setPassword] = useState("");
+  const history = useHistory();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLoading(true);
+    loginUser({ identifier, password })
+      .then((res) => {
+        setLocalStorage(res.data.jwt);
+        saveUserAndPassword(identifier, password);
+        dispatch({
+          type: "SET_USER",
+          user: res.data.user,
+        });
+        history.push("/dashboard");
+      })
+      .catch((err) => {
+        if (err?.response?.status === 400) {
+          alert("Invalid username or password");
+          setLoading(false);
+        }
+      });
+  };
+
+  useEffect(() => {
+    if (getJwt()) {
+      history.push("/dashboard");
+    }
+  }, []);
+
   return (
     <div className="login">
       <div className="login__left">
@@ -22,13 +56,25 @@ function Login() {
           <form className="login__form">
             <div className="login__item">
               <span>Your Email</span>
-              <input type="email" placeholder="itstaranarora@gmail.com" />
+              <input
+                type="email"
+                value={identifier}
+                onChange={(e) => setIdentifier(e.target.value)}
+                placeholder="itstaranarora@gmail.com"
+              />
             </div>
             <div className="login__item">
               <span>Password</span>
-              <input type="password" placeholder="8+ characters" />
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="8+ characters"
+              />
             </div>
-            <input className="login__button" type="button" value="Sign In" />
+            <button onClick={handleSubmit} className="login__button">
+              {loading ? <CircularProgress color="#fff" /> : "Login"}
+            </button>
           </form>
         </div>
       </div>

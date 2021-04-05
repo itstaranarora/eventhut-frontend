@@ -1,30 +1,48 @@
 import React from "react";
-import {
-  Admin,
-  Resource,
-  List,
-  Datagrid,
-  TextField,
-  DateField,
-} from "react-admin";
-import simpleRestProvider from "ra-data-simple-rest";
+import AdminLayout from "components/AdminLayout";
+import { useStateValue } from "states/StateProvider";
+import MaterialTable from "material-table";
+import Logo from "assets/Component-2.svg";
 
-const dataProvider = simpleRestProvider("https://eventhut.herokuapp.com");
+export default function Admin() {
+  const [{ user }] = useStateValue();
 
-export const PostList = (props) => (
-  <List {...props}>
-    <Datagrid>
-      <TextField source="id" />
-      <TextField source="name" />
-      <DateField source="datetime" />
-    </Datagrid>
-  </List>
-);
+  if (!user) {
+    return (
+      <div className="event__loading">
+        <img src={Logo} alt="logo" />
+      </div>
+    );
+  }
 
-const App = () => (
-  <Admin dataProvider={dataProvider}>
-    <Resource name="events" list={PostList} />
-  </Admin>
-);
+  console.log(user?.events);
 
-export default App;
+  return (
+    <AdminLayout>
+      <MaterialTable
+        title="Your Events"
+        columns={[
+          { title: "Name", field: "name" },
+          {
+            title: "Mode",
+            field: "isOnline",
+            lookup: { true: "Online", false: "Offline" },
+          },
+          { title: "Date & Time", field: "datetime", type: "datetime" },
+          {
+            title: "Price",
+            field: "price",
+          },
+        ]}
+        data={user?.events}
+        actions={[
+          {
+            icon: "save",
+            tooltip: "Save User",
+            onClick: (event, rowData) => alert("You saved " + rowData.name),
+          },
+        ]}
+      />
+    </AdminLayout>
+  );
+}

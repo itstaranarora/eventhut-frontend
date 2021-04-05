@@ -5,19 +5,41 @@ import logoDark from "../../assets/Logo-Dark.svg";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { useStateValue } from "../../states/StateProvider";
-import { Signup as NewUser } from "../../api";
+import {registerUser, getJwt, saveUserAndPassword} from "api"
+import { CircularProgress } from "@material-ui/core";
+import { useEffect } from "react";
+// import { Signup as NewUser } from "../../api";
 
 function Signup(props) {
-  const [{ darkMode }] = useStateValue();
+  const [{ darkMode }, dispatch] = useStateValue();
   const history = useHistory();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading,setLoading] = useState(false)
+
+  useEffect(() => {
+    if(getJwt()) {
+      history.push("/dashboard")
+    }
+  }, [])
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    NewUser(username, password, email);
-    history.push("/");
+    setLoading(true)
+    registerUser({username,password,email}).then(res => {
+      saveUserAndPassword(username, password)
+      dispatch(
+      {
+        type: "SET_USER",
+        user: res.data.user
+      })
+      history.push("/dashboard")
+    } ).catch(err =>{ if(err.response.status === 400){
+      alert("Username or Email already taken")
+      setLoading(false)
+    }})
+    
   };
 
   return (
@@ -70,7 +92,7 @@ function Signup(props) {
               />
             </div>
             <button onClick={handleSubmit} className="signup__button">
-              Sign Up
+              {loading? <CircularProgress color="#fff"/>:"Sign Up"}
             </button>
           </form>
         </div>
