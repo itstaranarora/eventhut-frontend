@@ -3,6 +3,7 @@ import { useStateValue } from "../../states/StateProvider";
 import Logo from "../../assets/Logo.svg";
 import logoDark from "../../assets/Logo-Dark.svg";
 import { Link } from "react-router-dom";
+import {getJwt} from "api"
 import "./Header.css";
 
 function Header() {
@@ -18,8 +19,14 @@ function Header() {
         />
       </Link>
       <div className="header__items">
-        <Link to="/login">Login</Link>
+        
+      {getJwt() ?  <Link to="/dashboard">Dashboard</Link> : (
+        <>
+          <Link to="/login">Login</Link>
         <Link to="/signup">Sign Up</Link>
+        </>
+      )}
+       
       </div>
     </header>
   );

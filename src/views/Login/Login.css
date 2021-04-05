@@ -119,6 +119,7 @@
   border-radius: 0.5rem;
   align-items: center;
   justify-content: center;
+  outline: none;
   height: 55px;
   text-decoration: none;
   border: none;
